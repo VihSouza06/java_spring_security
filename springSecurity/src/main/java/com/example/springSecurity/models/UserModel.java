@@ -1,6 +1,6 @@
 package com.example.springSecurity.models;
 
-import com.example.springSecurity.enums.UserEnum;
+import com.example.springSecurity.enums.UserRole;
 import jakarta.persistence.*;
 import org.jspecify.annotations.Nullable;
 import org.springframework.security.core.GrantedAuthority;
@@ -11,17 +11,17 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity
-@Table
-public class User implements UserDetails {
+@Table(name = "users")
+public class UserModel implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String login;
-    private String senha;
-    private UserEnum role;
+    private String password;
+    private UserRole role;
 
-    public User() {
+    public UserModel() {
 
     }
 
@@ -41,33 +41,30 @@ public class User implements UserDetails {
         this.login = login;
     }
 
-    public String getSenha() {
-        return senha;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
-    public UserEnum getRole() {
+    public UserRole getRole() {
         return role;
     }
 
-    public void setRole(UserEnum role) {
+    public void setRole(UserRole role) {
         this.role = role;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        if(this.role == UserEnum.ADMIN)
-            return  List.of(new SimpleGrantedAuthority("USER_ADMIN"));
+        if(this.role == UserRole.ADMIN)
+            return  List.of(new SimpleGrantedAuthority("ROLE_ADMIN"),
+                    new SimpleGrantedAuthority("ROLE_USER"));
         else
-            return List.of(new SimpleGrantedAuthority("USER_CLIENTE"));
+            return List.of(new SimpleGrantedAuthority("ROLE_USER"));
     }
 
     @Override
     public @Nullable String getPassword() {
-        return senha;
+        return password;
     }
 
     @Override

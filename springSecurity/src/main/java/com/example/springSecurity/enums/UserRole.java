@@ -1,6 +1,6 @@
 package com.example.springSecurity.enums;
 
-public enum UserEnum {
+public enum UserRole {
     ADMIN,
     CLIENTE,
     COMUM
