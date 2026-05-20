@@ -6,7 +6,7 @@ import lombok.Data;
 import java.util.List;
 
 @Entity
-@Table(name = "produtos")
+@Table(name = "pessoas")
 @Data
 public class PessoaModel {
 
@@ -16,6 +16,6 @@ public class PessoaModel {
     private String nome;
 
     @OneToMany
-    private List<JobModel> jobModelList;
+    private List<ProdutoModel> produtoModelList;
 
 }

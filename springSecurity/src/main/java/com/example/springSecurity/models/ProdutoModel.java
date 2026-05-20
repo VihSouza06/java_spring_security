@@ -4,13 +4,16 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
-@Table(name = "jobs")
+@Table(name = "produtos")
 @Data
-public class JobModel {
+public class ProdutoModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
-    private String endereco;
+    private Double preco;
+
+    @ManyToOne
+    private PessoaModel pessoaModel;
 
 }

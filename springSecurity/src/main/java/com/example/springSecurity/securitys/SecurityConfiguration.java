@@ -18,13 +18,21 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity){
-        return httpSecurity.csrf(csrf -> csrf.disable())
+        return httpSecurity
+                .csrf(csrf -> csrf.disable())
+                // Permite que o H2 Console seja exibido em frame
+                .headers(headers -> headers
+                        .frameOptions(frame -> frame.disable())
+                )
                 .sessionManagement(session ->
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
+                        // Libera o console do H2
+                        .requestMatchers("/h2-console/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
                         .requestMatchers(HttpMethod.POST, "/pessoas").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/produtos").hasRole("CLIENTE")
                         .anyRequest().authenticated()
                 )
                 .build();
