@@ -1,5 +1,6 @@
 package com.example.springSecurity.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -14,6 +15,8 @@ public class ProdutoModel {
     private Double preco;
 
     @ManyToOne
-    private PessoaModel pessoaModel;
+    @JoinColumn(name = "pessoa_id")
+    @JsonIgnoreProperties("produto")
+    private PessoaModel pessoa;
 
 }

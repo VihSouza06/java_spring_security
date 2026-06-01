@@ -1,4 +1,4 @@
-package com.example.springSecurity.models;
+package com.example.springSecurity.dto;
 
 import com.example.springSecurity.enums.UserRole;
 

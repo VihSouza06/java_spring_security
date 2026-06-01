@@ -1,7 +1,7 @@
 package com.example.springSecurity.controllers;
 
-import com.example.springSecurity.models.AuthenticationDTO;
-import com.example.springSecurity.models.RegisterDTO;
+import com.example.springSecurity.dto.AuthenticationDTO;
+import com.example.springSecurity.dto.RegisterDTO;
 import com.example.springSecurity.models.UserModel;
 import com.example.springSecurity.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

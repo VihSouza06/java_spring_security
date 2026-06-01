@@ -1,5 +1,6 @@
 package com.example.springSecurity.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -15,7 +16,8 @@ public class PessoaModel {
     private Long id;
     private String nome;
 
-    @OneToMany
-    private List<ProdutoModel> produtoModelList;
+    @OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<ProdutoModel> produto;
 
 }
