@@ -13,20 +13,8 @@ public class UserService implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
-    /*
-     * Metodo responsável por buscar um usuário no banco de dados
-     * através do login informado.
-     *
-     * O Spring Security chama automaticamente esse metodo
-     * durante o processo de autenticação.
-     *
-     * @param username -> login digitado pelo usuário
-     * @return UserDetails -> objeto contendo os dados do usuário
-     *         (login, senha e permissões)
-     * @throws UsernameNotFoundException -> exceção lançada
-     *         caso o usuário não seja encontrado
-     */
-
+    //Metodo responsável por buscar um usuário no banco de dados através do login informado.
+    // UsernameNotFoundException - exceção caso o usuário não seja encontrado
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userRepository.findByLogin(username);

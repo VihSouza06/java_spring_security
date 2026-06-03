@@ -10,6 +10,8 @@ import java.util.List;
 @Service
 public class PessoaService {
 
+    // Injeta automaticamente o repository da Pessoa.
+    // O repository será utilizado para acessar o banco de dados.
     @Autowired
     private PessoaRepository pessoaRepository;
 

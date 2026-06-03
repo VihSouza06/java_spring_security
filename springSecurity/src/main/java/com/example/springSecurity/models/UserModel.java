@@ -14,6 +14,8 @@ import java.util.List;
 @Entity
 @Table(name = "users")
 @Data
+
+// UserDetails - objeto contendo os dados do usuário (login, senha e permissões)
 public class UserModel implements UserDetails {
 
     @Id

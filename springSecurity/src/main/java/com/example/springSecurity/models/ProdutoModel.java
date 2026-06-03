@@ -8,6 +8,7 @@ import lombok.Data;
 @Table(name = "produtos")
 @Data
 public class ProdutoModel {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
