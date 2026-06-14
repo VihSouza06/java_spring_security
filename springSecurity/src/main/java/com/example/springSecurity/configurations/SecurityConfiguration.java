@@ -33,17 +33,20 @@ public class SecurityConfiguration {
                         .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
                         .requestMatchers(HttpMethod.POST, "/pessoas").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET, "/produtos").hasRole("CLIENTE")
+                        // Qualquer outra rota exige autenticação
                         .anyRequest().authenticated()
                 )
                 .build();
     }
 
+    // Autenticação do login
     @Bean
     public AuthenticationManager authenticationManager(
             AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return  authenticationConfiguration.getAuthenticationManager();
     }
 
+    // Criotografar senha
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();

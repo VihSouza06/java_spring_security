@@ -8,5 +8,5 @@ import org.springframework.security.core.userdetails.UserDetails;
 public interface UserRepository extends JpaRepository<UserModel, Long> {
 
     // Método responsável por buscar um usuário através do login.
-    UserDetails findByLogin(String role);
+    UserDetails findByLogin(String login);
 }
